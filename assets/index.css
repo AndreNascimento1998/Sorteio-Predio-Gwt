@@ -1,0 +1,23 @@
+.invisivel{
+    display: none;
+}
+
+.fonte{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.corAzul{
+    color: blue;
+}
+
+.corVermelha{
+    color: red;
+}
+
+.telaFundo{
+    background-color: rgb(211, 211, 211);
+}

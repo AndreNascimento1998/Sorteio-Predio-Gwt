@@ -49,27 +49,35 @@ const sorteioTemp = [
     },
 ]
 
-sorteioTemp.forEach(vl => {
-    vl.lado = getRandomInt(1, 3)
-    vl.lado = converte(vl.lado);
-});
 
 const botao = document.querySelector('.filtraResultados');
 
 botao.addEventListener('click', (e) => {
     e.preventDefault();
 
+    setTimeout(() => {
+        const h2 = document.querySelector('.pickH2');
+        h2.textContent = '';
+    }, 4000)
+    
+    sorteioTemp.forEach(vl => {
+        vl.lado = getRandomInt(1, 3)
+        vl.lado = converte(vl.lado);
+    });
+    
     const sorteioTr = document.createElement('tr');
 
     for(c in sorteioTemp){
-        sorteioTr.appendChild(addTd(sorteioTemp[c].lado, c));  
+        sorteioTr.appendChild(addTd(sorteioTemp[c].lado, c));
     }
 
     const tabela = document.querySelector('#tabela-pacientes');
     tabela.appendChild(sorteioTr);
 
-    const botaoLimpa = document.querySelector('.filtraResultados');
-    botaoLimpa.classList.add('invisivel');
+    const tbodyPai = document.querySelector('tbody');
+    tbodyPai.addEventListener('click', function(e){
+        e.target.parentNode.remove();
+    })
 })
 
 
