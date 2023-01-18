@@ -62,7 +62,7 @@ botao.addEventListener('click', (e) => {
     const sorteioTr = document.createElement('tr');
 
     for(c in sorteioTemp){
-        sorteioTr.appendChild(addTd(sorteioTemp[c].lado));  
+        sorteioTr.appendChild(addTd(sorteioTemp[c].lado, c));  
     }
 
     const tabela = document.querySelector('#tabela-pacientes');
@@ -87,9 +87,14 @@ function converte(numero){
     }
 };
 
-function addTd(valor){
+function addTd(valor, index){
     const predio = document.createElement('td');
     predio.textContent = valor;
-    predio.classList.add('fonte')
+    predio.classList.add('fonte');
+    if(index % 2 == 0){
+        predio.classList.add('corVermelha');
+    }else {
+        predio.classList.add('corAzul');
+    }
     return predio;
 }
