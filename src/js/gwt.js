@@ -49,16 +49,18 @@ const sorteioTemp = [
     },
 ]
 
-
 const botao = document.querySelector('.filtraResultados');
+const botao2 = document.querySelector('.limparResultados');
 
-botao.addEventListener('click', (e) => {
-    e.preventDefault();
+botao2.addEventListener('click', () => {
+    window.location.reload();
+})
 
+botao.addEventListener('click', () => {
     setTimeout(() => {
         const h2 = document.querySelector('.pickH2');
-        h2.textContent = '';
-    }, 4000)
+        h2.classList.add('invisivel');
+    }, 2000)
     
     sorteioTemp.forEach(vl => {
         vl.lado = getRandomInt(1, 3)
@@ -78,6 +80,7 @@ botao.addEventListener('click', (e) => {
     tbodyPai.addEventListener('click', function(e){
         e.target.parentNode.remove();
     })
+    
 })
 
 
