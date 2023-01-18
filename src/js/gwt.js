@@ -49,6 +49,35 @@ const sorteioTemp = [
     },
 ]
 
+sorteioTemp.forEach(vl => {
+    vl.lado = getRandomInt(1, 3)
+    vl.lado = converte(vl.lado);
+});
+
+sorteioTemp.forEach(vl => {
+    console.log(`Prédio ${vl.predio} Lado: ${vl.lado}`);
+});
+
+let botao = document.querySelector('.filtraResultados');
+
+
+botao.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    let sorteioTr = document.createElement('tr');
+
+    for(c in sorteioTemp){
+        sorteioTr.appendChild(addTd(sorteioTemp[c].lado));  
+    }
+
+    let tabela = document.querySelector('#tabela-pacientes');
+    tabela.appendChild(sorteioTr);
+
+    const botaoLimpa = document.querySelector('.filtraResultados');
+    botaoLimpa.classList.add('invisivel');
+})
+
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -63,11 +92,9 @@ function converte(numero){
     }
 };
 
-sorteioTemp.forEach(vl => {
-    vl.lado = getRandomInt(1, 3)
-    vl.lado = converte(vl.lado);
-});
-
-sorteioTemp.forEach(vl => {
-    console.log(`Prédio ${vl.predio} Lado: ${vl.lado}`);
-});
+function addTd(valor){
+    debugger;
+    let predio = document.createElement('td');
+    predio.textContent = valor;
+    return predio;
+}
