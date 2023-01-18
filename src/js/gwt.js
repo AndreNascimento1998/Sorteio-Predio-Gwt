@@ -54,23 +54,18 @@ sorteioTemp.forEach(vl => {
     vl.lado = converte(vl.lado);
 });
 
-sorteioTemp.forEach(vl => {
-    console.log(`Prédio ${vl.predio} Lado: ${vl.lado}`);
-});
-
-let botao = document.querySelector('.filtraResultados');
-
+const botao = document.querySelector('.filtraResultados');
 
 botao.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let sorteioTr = document.createElement('tr');
+    const sorteioTr = document.createElement('tr');
 
     for(c in sorteioTemp){
         sorteioTr.appendChild(addTd(sorteioTemp[c].lado));  
     }
 
-    let tabela = document.querySelector('#tabela-pacientes');
+    const tabela = document.querySelector('#tabela-pacientes');
     tabela.appendChild(sorteioTr);
 
     const botaoLimpa = document.querySelector('.filtraResultados');
@@ -93,8 +88,8 @@ function converte(numero){
 };
 
 function addTd(valor){
-    debugger;
-    let predio = document.createElement('td');
+    const predio = document.createElement('td');
     predio.textContent = valor;
+    predio.classList.add('fonte')
     return predio;
 }
